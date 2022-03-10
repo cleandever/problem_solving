@@ -31,9 +31,6 @@ def trans_to_list(nums):
 
 class Solution:
     def sol1(self, l1, l2):
-        """
-        시간복잡도 : O(N*N)
-        """
         nums1 = trans_to_arr(l1)
         nums2 = trans_to_arr(l2)
 
@@ -49,9 +46,6 @@ class Solution:
         return trans_to_list(res)
 
     def sol2(self, l1, l2):
-        """
-        시간복잡도 : O(N)
-        """
         dummy = cur = ListNode(0)
         carry = 0
         while l1 or l2 or carry:
