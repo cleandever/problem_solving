@@ -30,7 +30,10 @@ def trans_to_list(nums):
 
 
 class Solution:
-    def addTwoNumbers(self, l1, l2):
+    def sol1(self, l1, l2):
+        """
+        시간복잡도 : O(N*N)
+        """
         nums1 = trans_to_arr(l1)
         nums2 = trans_to_arr(l2)
 
@@ -44,6 +47,33 @@ class Solution:
             res.append(1)
 
         return trans_to_list(res)
+
+    def sol2(self, l1, l2):
+        """
+        시간복잡도 : O(N)
+        """
+        dummy = cur = ListNode(0)
+        carry = 0
+        while l1 or l2 or carry:
+            cur.next = ListNode()
+            cur = cur.next
+            n1, n2 = 0, 0
+            if l1:
+                n1 = l1.val
+                l1 = l1.next
+            if l2:
+                n2 = l2.val
+                l2 = l2.next
+
+            carry, remainder = divmod(n1 + n2 + carry, 10)
+            cur.val = remainder
+
+        return dummy.next
+
+
+    def addTwoNumbers(self, l1, l2):
+        #return self.sol1(l1, l2)
+        return self.sol2(l1, l2)
 
 
 l1 = trans_to_list([2, 4, 3])
